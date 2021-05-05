@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from '../Input/Input';
 import SubmitButton from "../SubmitButton/SubmitButton";
+import Instance from "../Services/Services";
 
 const Login = (props) => {
 
@@ -15,7 +16,10 @@ const Login = (props) => {
             "password": password
         }
 
-        // POST to hefesto/login
+        Instance.post('/login', payload)
+            .then(response => {
+                let token = response.data.token;
+            });
     }
 
     return (
