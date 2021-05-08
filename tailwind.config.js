@@ -10,16 +10,21 @@ module.exports = {
             },
             green: {
                 DEFAULT: '#8cb27f',
-                dark: '#55725d'
+                dark: '#55725d',
+                light: '#c6d9bf'
             },
             blue: {
-                DEFAULT: '#073f5a'
+                DEFAULT: '#073f5a',
+                dark: '#04202d',
+                light: '#39657b'
             },
             primary: {
                 DEFAULT: '#1f1c17',
             },
             warning: {
                 DEFAULT: '#D1711C',
+                dark: '#7d4411',
+                light: '#e3aa77'
             }
         },
         extend: {
