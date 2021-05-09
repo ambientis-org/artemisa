@@ -8,9 +8,9 @@ const Login = () => {
     const submit = (e) => {
         e.preventDefault();
 
-        let username = e.target.elements.username?.value;
+        let email = e.target.elements.email?.value;
         let password = e.target.elements.password?.value;
-        let payload = { username, password };
+        let payload = { email, password };
 
         Instance.post('/login', payload)
             .then((response) => {
@@ -43,11 +43,11 @@ const Login = () => {
 
                     <form onSubmit={submit}>
                         <Input
-                            id='username'
+                            id='email'
                             label='Email'
                             type='text'
-                            placeholder='janedoe'
-                            labelName='Usuario'
+                            placeholder='me@example.com'
+                            labelName='Correo electrónico'
                         />
                         <Input
                             id='password'
