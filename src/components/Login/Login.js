@@ -1,6 +1,6 @@
 import React from 'react';
-import SubmitButton  from '../SubmitButton/SubmitButton';
-import Input from '../Input/Input';
+import SubmitButton  from '../FormComponents/SubmitButton/SubmitButton';
+import Input from '../FormComponents/Input/Input';
 import Instance from "../Services/Services";
 
 const Login = () => {
