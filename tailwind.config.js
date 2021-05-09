@@ -6,25 +6,36 @@ module.exports = {
             transparent: 'transparent',
             current: 'currentColor',
             white: {
-                DEFAULT: '#e8e6ea',
+                DEFAULT: '#ffffff',
             },
             green: {
-                DEFAULT: '#8cb27f',
-                dark: '#55725d',
-                light: '#c6d9bf'
+                light: '#6fcf97',
+                DEFAULT: '#27AE60',
+                dark: '#219653',
+                darker: '#1e874b',
+            },
+            red: {
+                light: '#FFEAEA',
+                DEFAULT: '#EB5757',
+                dark: '#C20D0D',
             },
             blue: {
                 DEFAULT: '#073f5a',
-                dark: '#04202d',
-                light: '#39657b'
+                light: '#51798c',
+                dark: '#052c3f',
+                darker: '#031924',
+                lighter: '#9cb2bd'
+            },
+            orange: {
+                light: '#FFEBDA',
+                DEFAULT: '#F66A0A',
+                dark: '#A04100',
             },
             primary: {
-                DEFAULT: '#1f1c17',
+                DEFAULT: '#24292E',
             },
             warning: {
                 DEFAULT: '#D1711C',
-                dark: '#7d4411',
-                light: '#e3aa77'
             }
         },
         extend: {

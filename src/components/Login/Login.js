@@ -1,55 +1,69 @@
 import React from 'react';
+import SubmitButton  from '../SubmitButton/SubmitButton';
 import Input from '../Input/Input';
-import SubmitButton from "../SubmitButton/SubmitButton";
 import Instance from "../Services/Services";
 
-const Login = (props) => {
+const Login = () => {
 
     const submit = (e) => {
         e.preventDefault();
 
         let username = e.target.elements.username?.value;
         let password = e.target.elements.password?.value;
-
-        const payload = {
-            "username": username,
-            "password": password
-        }
+        let payload = { username, password };
 
         Instance.post('/login', payload)
-            .then(response => {
-                let token = response.data.token;
-            });
-    }
+            .then((response) => {
+                let token = response.body.token;
+            })
+            .catch((response) => {
+                    console.log('Hefesto is not reachable');
+                    console.log(response.body)
+                }
+            );
+    };
+
+    const classes = {
+        pageBody: 'h-screen flex bg-gray place-items-center',
+        formContainer:
+            'w-full max-w-md m-auto bg-white rounded-lg shadow-lg py-10 px-16 text-left',
+        formHeading: 'text-2xl font-medium text-primary mt-4 mb-12',
+        btnContainer: 'flex justify-center items-center mt-6',
+        headingContainer: 'text-center'
+    };
 
     return (
-        <div className='h-screen flex bg-gray-bg1'>
-                <div className='w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16'>
-                        <h1 className='text-2xl font-medium text-primary mt-4 mb-12 text-center'>
+        <div className={classes.pageBody}>
+            <div className={classes.formContainer}>
+                    <div className={classes.headingContainer}>
+                        <h1 className={classes.formHeading}>
                             Inicia sesión 🔐
                         </h1>
+                    </div>
 
-                        <form onSubmit={submit}>
-                            <Input
-                                labelName="Usuario"
-                                placeholder="johndoe"
-                                id="username"
-                                type="text"
-                            />
-                            <Input
-                                labelName="Contraseña"
-                                placeholder="**********"
-                                id="password"
-                                type="password"
-                            />
+                    <form onSubmit={submit}>
+                        <Input
+                            id='username'
+                            label='Email'
+                            type='text'
+                            placeholder='janedoe'
+                            labelName='Usuario'
+                        />
+                        <Input
+                            id='password'
+                            label='Password'
+                            type='password'
+                            placeholder='************'
+                            labelName='Contraseña'
+                        />
 
-                            <div className='flex justify-center items-center mt-6'>
-                                <SubmitButton buttonName="Iniciar sesión"/>
-                            </div>
-                        </form>
-                </div>
+                        <div className={classes.btnContainer}>
+                            <SubmitButton type='submit' buttonName={"Iniciar sesión"}/>
+                        </div>
+                    </form>
+            </div>
         </div>
     );
-}
+};
 
 export default Login;
