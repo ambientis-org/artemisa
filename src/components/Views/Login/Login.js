@@ -1,7 +1,7 @@
 import React from 'react';
-import SubmitButton  from '../FormComponents/SubmitButton/SubmitButton';
-import Input from '../FormComponents/Input/Input';
-import Instance from "../Services/Services";
+import SubmitButton  from '../../FormComponents/SubmitButton/SubmitButton';
+import Input from '../../FormComponents/Input/Input';
+import Instance from "../../Api/Services/Services";
 
 const Login = () => {
 
