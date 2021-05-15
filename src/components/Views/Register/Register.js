@@ -27,18 +27,10 @@ const Register = (props) => {
             birthdate,
             genre
         }
-
-        Instance('/register', payload)
+        Instance.post('/register', payload)
             .then((response) => {
-                Instance('/login')
-                    .then(
-                        (loginResponse) => {
-                            let token = loginResponse.body.token;
-                        })
-                    .catch((response) => {
-                            console.log('Hefesto is not reachable');
-                            console.log(response.body)
-                        });
+                console.log(response);
+                props.history.push('/')
             })
             .catch((response) => {
                     console.log('Hefesto is not reachable');
@@ -49,7 +41,7 @@ const Register = (props) => {
     const classes = {
         pageBody: 'h-screen flex bg-gray place-items-center',
         formContainer:
-            'w-full max-w-lg m-auto bg-white rounded-lg shadow-lg py-10 px-16 text-left',
+            'w-full max-w-lg m-auto bg-white rounded-lg lg:shadow-lg py-10 px-16 text-left',
         formHeading: 'text-2xl font-medium text-primary mt-4 mb-12',
         btnContainer: 'flex justify-center items-center mt-6',
     };
@@ -93,7 +85,7 @@ const Register = (props) => {
                             </div>
                             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                 <Input
-                                    id='password'
+                                    id='passwordConfirm'
                                     type='password'
                                     placeholder='************'
                                     labelName='Confirmar contraseña'
