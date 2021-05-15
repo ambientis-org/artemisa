@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import SubmitButton from '../../FormComponents/SubmitButton/SubmitButton';
 import Input from '../../FormComponents/Input/Input';
-import axios from 'axios';
+import Instance from '../../Api/Services/Services';
 
 const Login = () => {
 
@@ -16,18 +16,14 @@ const Login = () => {
         let password = e.target.elements.password?.value;
         let payload = { email, password };
 
-        axios.defaults.withCredentials = true;
         handleValidation();
-        axios('http://127.0.0.1:8080/api/v2/login', {
-            method: 'POST',
-            withCredentials: true,
-            data: payload
-        }).then(res => {
-            console.log(res);
-        }).catch(err => {
-            errors["result"] = 'Parece que no estás registrado.'
-            setErrors(errors);
-        })
+        Instance.post('/login', payload, {withCredentials: true})
+            .then(res => {
+                console.log(res);
+            }).catch(err => {
+                errors["result"] = 'Parece que no te has registrado.'
+                setErrors(errors);
+            })
     };
 
     const handleChange = (field, e) => {
