@@ -1,13 +1,15 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
 
+import { AuthContext } from '../../Api/AuthContext/AuthContext';
 import SubmitButton from '../../FormComponents/SubmitButton/SubmitButton';
 import Input from '../../FormComponents/Input/Input';
 import Instance from '../../Api/Services/Services';
 
-const Login = () => {
+const Login = (props) => {
 
     const [fields, setFields] = useState({});
     const [errors, setErrors] = useState({});
+    const [authState, setauthState] = useContext(AuthContext);
 
     const submit = (e) => {
         e.preventDefault();
@@ -16,14 +18,19 @@ const Login = () => {
         let password = e.target.elements.password?.value;
         let payload = { email, password };
 
-        handleValidation();
-        Instance.post('/login', payload, {withCredentials: true})
-            .then(res => {
-                console.log(res);
-            }).catch(err => {
-                errors["result"] = 'Parece que no te has registrado.'
-                setErrors(errors);
-            })
+        if (handleValidation()) {
+            Instance.post('/login', payload)
+                .then(res => {
+                    setauthState({authToken: `Bearer ${res.data.mentiaAuthToken}`, username: res.data.username});
+                    localStorage.setItem('mentiaAuthToken', `Bearer ${res.data.mentiaAuthToken}`)
+                    localStorage.setItem('mentiaUsername', res.data.username)
+                    props.history.push('/home');
+                }).catch(err => {
+                    errors["result"] = 'Parece que no te has registrado.'
+                    setErrors(errors);
+                });
+        }
+    
     };
 
     const handleChange = (field, e) => {
@@ -53,6 +60,7 @@ const Login = () => {
         }
 
         setErrors(err);
+        return Object.keys(err).length === 0 ? true : false;
     }
 
     const classes = {

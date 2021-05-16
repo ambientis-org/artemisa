@@ -18,7 +18,7 @@ const Register = (props) => {
         let username =  e.target.elements.username?.value;
         let name =  e.target.elements.name?.value;
         let lastname =  e.target.elements.lastname?.value;
-        let birthdate =  e.target.elements.birthdate?.value;
+        let birthdate =  new Date(e.target.elements.birthdate?.value);
         let genre =  e.target.elements.genre?.value;
 
         if (handleValidation()) {
@@ -33,7 +33,6 @@ const Register = (props) => {
             }
             Instance.post('/register', payload)
                 .then((response) => {
-                    console.log(response);
                     props.history.push('/')
                 })
                 .catch((response) => {
