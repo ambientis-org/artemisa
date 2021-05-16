@@ -1,9 +1,15 @@
-import React from 'react';
-import SubmitButton  from '../../FormComponents/SubmitButton/SubmitButton';
-import Input from '../../FormComponents/Input/Input';
-import Instance from "../../Api/Services/Services";
+import React, { useState, useContext } from 'react';
 
-const Login = () => {
+import { AuthContext } from '../../Api/AuthContext/AuthContext';
+import SubmitButton from '../../FormComponents/SubmitButton/SubmitButton';
+import Input from '../../FormComponents/Input/Input';
+import Instance from '../../Api/Services/Services';
+
+const Login = (props) => {
+
+    const [fields, setFields] = useState({});
+    const [errors, setErrors] = useState({});
+    const [authState, setauthState] = useContext(AuthContext);
 
     const submit = (e) => {
         e.preventDefault();
@@ -12,23 +18,57 @@ const Login = () => {
         let password = e.target.elements.password?.value;
         let payload = { email, password };
 
-        Instance.post('/login', payload)
-            .then((response) => {
-                let token = response.body.token;
-            })
-            .catch((response) => {
-                    console.log('Hefesto is not reachable');
-                    console.log(response.body)
-                }
-            );
+        if (handleValidation()) {
+            Instance.post('/login', payload)
+                .then(res => {
+                    setauthState({authToken: `Bearer ${res.data.mentiaAuthToken}`, username: res.data.username});
+                    localStorage.setItem('mentiaAuthToken', `Bearer ${res.data.mentiaAuthToken}`)
+                    localStorage.setItem('mentiaUsername', res.data.username)
+                    props.history.push('/home');
+                }).catch(err => {
+                    errors["result"] = 'Parece que no te has registrado.'
+                    setErrors(errors);
+                });
+        }
+    
     };
 
+    const handleChange = (field, e) => {
+        setErrors({});
+        fields[field] = e.target.value;
+        setFields(fields);
+    }
+
+    const handleValidation = () => {
+        const err = {};
+
+        if (!fields['email']) {
+            err['email'] = "Parece que el email está vacío.";
+        }
+
+        if (typeof fields["email"] !== "undefined") {
+            let lastAtPos = fields["email"].lastIndexOf('@');
+            let lastDotPos = fields["email"].lastIndexOf('.');
+
+            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') === -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
+                err["email"] = "Esto no parece ser un email...";
+            }
+        }
+
+        if (!fields['password']) {
+            err['password'] = "Parece que la contraseña está vacía."
+        }
+
+        setErrors(err);
+        return Object.keys(err).length === 0 ? true : false;
+    }
+
     const classes = {
-        pageBody: 'h-screen flex bg-gray place-items-center',
+        pageBody: 'h-screen sm:h-screen flex bg-gray place-items-center',
         formContainer:
-            'w-full max-w-md m-auto bg-white rounded-lg shadow-lg py-10 px-16 text-left',
+            'w-full max-w-lg m-auto bg-white rounded-lg lg:shadow-lg py-10 px-16 text-left',
         formHeading: 'text-2xl font-medium text-primary mt-4 mb-12',
-        btnContainer: 'flex justify-center items-center mt-6',
+        btnContainer: 'flex justify-center items-center mt-6 space-x-12',
         headingContainer: 'text-center'
     };
 
@@ -44,20 +84,32 @@ const Login = () => {
                     <form onSubmit={submit}>
                         <Input
                             id='email'
+                            name='email'
                             label='Email'
                             type='text'
+                            margin='mb-12'
                             placeholder='me@example.com'
                             labelName='Correo electrónico'
+                            errors={errors}
+                            onChange={handleChange.bind(this, 'email')}
                         />
                         <Input
                             id='password'
+                            name='password'
                             label='Password'
                             type='password'
+                            margin='mb-4'
                             placeholder='************'
                             labelName='Contraseña'
+                            errors={errors}
+                            onChange={handleChange.bind(this, 'password')}
                         />
 
+                        <span className={'text-sm text-red mt-4 transition duration-150 ease-in-out'}>{ errors.result }</span>
                         <div className={classes.btnContainer}>
+                            <p className={'text-sm text-blue-light hover:text-blue-dark'}>
+                                <a href="/register">Regístrate</a>
+                            </p>
                             <SubmitButton type='submit' buttonName={"Iniciar sesión"}/>
                         </div>
                     </form>
