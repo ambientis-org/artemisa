@@ -60,7 +60,7 @@ const Login = (props) => {
         }
 
         setErrors(err);
-        return Object.keys(err).length === 0 ? true : false;
+        return Object.keys(err).length === 0;
     }
 
     const classes = {
