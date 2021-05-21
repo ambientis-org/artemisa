@@ -9,7 +9,7 @@ const Home = (props) => {
 
     useEffect(() => {
         getUserInfo();
-    });
+    }, []);
 
     const getUserInfo = () => {
         Instance.get(`/users/${localStorage.getItem('mentiaUsername')}`, {headers: {'Authorization': localStorage.getItem('mentiaAuthToken')}})
