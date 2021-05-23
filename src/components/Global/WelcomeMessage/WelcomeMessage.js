@@ -36,7 +36,7 @@ const WelcomeMessage = (props) => {
             4: 'Jueves',
             5: 'Viernes',
             6: 'Sábado',
-        }
+        };
         return `${days[date.getDay()]}, ${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
     }
 
