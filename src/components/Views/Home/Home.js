@@ -1,12 +1,15 @@
 import React from 'react';
-import { AuthContext } from '../../Api/AuthContext/AuthContext';
-import Instance from '../../Api/Services/Services';
+
 import Header from '../../Global/Header/Header';
+import HeroSection from '../../Global/HeroSection/HeroSection';
 
 
 const Home = (props) => {
     return (
-        <div><Header/></div>
+        <div>
+            <Header/>
+            <HeroSection/>
+        </div>
     );
 }
 
