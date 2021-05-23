@@ -31,6 +31,11 @@ module.exports = {
                 DEFAULT: '#F66A0A',
                 dark: '#A04100',
             },
+            grey: {
+                light: '#C0C0C0',
+                DEFAULT: '#696969',
+                dark: '#202020'
+            },
             primary: {
                 DEFAULT: '#24292E',
             },
