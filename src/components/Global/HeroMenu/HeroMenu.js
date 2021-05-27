@@ -18,9 +18,11 @@ const HeroMenu = (props) => {
         }
         Instance.post(`/${localStorage.getItem('mentiaUsername')}/dailymood`, {mood: mood.value}, {headers})
             .then(response => {
+                // POST EXITOSO
                 console.log('Has cambiado tu mood exitósamente');
             })
             .catch(response => {
+                // POST ERRONEO
                 console.log('Aldo salió mal al registrar tu mood');
             });
     }
