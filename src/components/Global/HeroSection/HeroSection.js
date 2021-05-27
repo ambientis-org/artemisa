@@ -9,9 +9,6 @@ const HeroSection = (props) => {
         heroContainer: 'sm:text-center lg:text-left flex lg:flex-row flex-col items-center',
         heroTitle: 'text-4xl tracking-tight sm:text-5xl md:text-6xl',
     }
-    
-    const handleChange = (field, e) => {
-    }
 
     return (
         <main className={classes.mainSection}>
