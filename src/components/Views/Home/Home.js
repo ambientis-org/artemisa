@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from '../../Global/Header/Header';
 import HeroSection from '../../Global/HeroSection/HeroSection';
+import HeatJournal from './components/HeatJournal';
 
 
 const Home = (props) => {
@@ -9,6 +10,7 @@ const Home = (props) => {
         <div>
             <Header/>
             <HeroSection/>
+            <HeatJournal/>
         </div>
     );
 }

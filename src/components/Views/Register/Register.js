@@ -33,7 +33,8 @@ const Register = (props) => {
             }
             Instance.post('/register', payload)
                 .then((response) => {
-                    props.history.push('/')
+                    Instance.post(`/newJournal/${username}`)
+                        .then(props.history.push('/'));
                 })
                 .catch((response) => {
                     errors["result"] = 'Algo salió mal'

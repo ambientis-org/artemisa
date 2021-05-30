@@ -16,7 +16,7 @@ const HeroMenu = (props) => {
         const headers = {
             Authorization: localStorage.getItem('mentiaAuthToken')
         }
-        Instance.post(`/${localStorage.getItem('mentiaUsername')}/dailymood`, {mood: mood.value}, {headers})
+        Instance.post(`/mood/${localStorage.getItem('mentiaUsername')}/add`, {value: mood.value}, {headers})
             .then(response => {
                 // POST EXITOSO
                 console.log('Has cambiado tu mood exitósamente');
