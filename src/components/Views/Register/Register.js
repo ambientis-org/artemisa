@@ -15,11 +15,12 @@ const Register = (props) => {
 
         let email = e.target.elements.email?.value;
         let password = e.target.elements.password?.value;
-        let username =  e.target.elements.username?.value;
-        let name =  e.target.elements.name?.value;
-        let lastname =  e.target.elements.lastname?.value;
-        let birthdate =  new Date(e.target.elements.birthdate?.value);
+        let username = e.target.elements.username?.value;
+        let name = e.target.elements.name?.value;
+        let lastname = e.target.elements.lastname?.value;
+        let birthdate = new Date(e.target.elements.birthdate?.value);
         let genre =  e.target.elements.genre?.value;
+        let doctor_id = parseInt(e.target.elements.doctorid?.value);
 
         if (handleValidation()) {
             let payload = {
@@ -29,7 +30,8 @@ const Register = (props) => {
                 name,
                 lastname,
                 birthdate,
-                genre
+                genre,
+                doctor_id
             }
             Instance.post('/register', payload)
                 .then((response) => {
@@ -208,6 +210,19 @@ const Register = (props) => {
                                   <option>Mujer</option>
                                   <option>Hombre</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div className="flex flex-wrap -mx-3 mb-6">
+                            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <Input
+                                    id='doctorid'
+                                    name='doctorid'
+                                    type='text'
+                                    placeholder='12345678'
+                                    labelName='Clave de Doctor'
+                                    errors={errors}
+                                    onChange={handleChange.bind(this, 'doctorid')}
+                                />
                             </div>
                         </div>
                         <div className={classes.btnContainer}>

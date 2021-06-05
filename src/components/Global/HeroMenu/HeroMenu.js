@@ -30,7 +30,7 @@ const HeroMenu = (props) => {
 
     return (
         <div className="inline-block relative w-64">
-            <select onChange={event => handleChange(event)} className="lg:ml-10 md:mt-20 sm:mt-20 text-center lg:mt-0 block appearance-none px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline text-blue-light lg:text-3xl text-xl">
+            <select onChange={event => handleChange(event)} className="lg:ml-10 md:mt-20 sm:mt-20 text-center lg:mt-0 appearance-none px-4 py-2 rounded leading-tight focus:outline-none focus:shadow-outline text-blue-light lg:text-3xl text-xl">
                 <option className="text-2xl" value={5}>Excelente</option>
                 <option className="text-2xl" value={4}>Bien</option>
                 <option className="text-2xl" value={3}>Podría estar mejor</option>

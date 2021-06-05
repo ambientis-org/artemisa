@@ -18,7 +18,7 @@ const HeatJournal = (props) => {
     }); 
 
     const classes = {
-        heroContainer: 'shadow-lg rounded-2xl mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 h-full w-full lg:py-8 sm:py-6 py-4',
+        heroContainer: 'shadow-lg rounded-2xl mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 h-full w-full lg:py-8 sm:py-6 py-4 hidden lg:flex lg:flex-col',
         heatmapContainer: 'flex justify-center',
         titleContainer: 'm-20 mb-8 mt-0 text-blue text-xl'
     }
