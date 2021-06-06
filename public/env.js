@@ -6,7 +6,7 @@ window.env = {
   "npm_config_only": "",
   "npm_config_commit_hooks": "true",
   "npm_config_browser": "",
-  "npm_package_gitHead": "45c21b4581be32b156b3514ffadf08dcbb12ba86",
+  "npm_package_gitHead": "4f8fb1c46cf8ac7a23a4db7a64232a731b0bc601",
   "npm_config_also": "",
   "npm_config_sign_git_commit": "",
   "npm_config_rollback": "true",
