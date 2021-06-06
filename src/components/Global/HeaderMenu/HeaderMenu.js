@@ -11,7 +11,7 @@ const HeaderMenu = (props) => {
     }
 
     const onClickJournal = () => {
-        window.location.href = '/posts/new';
+        window.location.href = '/posts';
     }
 
     return (
