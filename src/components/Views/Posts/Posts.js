@@ -5,7 +5,7 @@ import Header from '../../Global/Header/Header';
 import HeroTitle from '../../Global/HeroTitle/HeroTitle';
 
 
-const Post = (props) => {
+const Posts = (props) => {
 
     const [state, setState] = useState({
         items: []
@@ -47,7 +47,7 @@ const Post = (props) => {
                     items.push(
                         <div className='text-left p-5'>
                             <div className='flex flex-col'>
-                                <h1 className='text-2xl text-blue'>{value.Title}</h1>
+                                <h1 className='text-2xl text-blue-light'>{value.Title}</h1>
                                 <span className='text-grey-light'>{getDate(value.CreatedAt)}</span>
                             </div>
                         </div>
@@ -81,4 +81,4 @@ const Post = (props) => {
 
 }
 
-export default Post;
+export default Posts;
