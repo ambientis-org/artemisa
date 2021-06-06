@@ -1,15 +1,17 @@
 import React, { useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
 import Instance from '../../Api/Services/Services';
 
 import Header from '../../Global/Header/Header';
-import HeroTitle from '../../Global/HeroTitle/HeroTitle';
 
 
-const Posts = (props) => {
+const Post = (props) => {
 
     const [state, setState] = useState({
         items: []
     });
+
+    const params = useParams();
 
     const classes = {
         heroContainer: 'lg:shadow-lg rounded-2xl mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28 w-full lg:py-8 sm:py-6 py-4 lg:flex lg:flex-col h-90 lg:mb-20',
@@ -40,21 +42,21 @@ const Posts = (props) => {
 
     useEffect(() => {
         const headers = {Authorization: localStorage.getItem('mentiaAuthToken')};
-        Instance.get(`/posts/${localStorage.getItem('mentiaUsername')}`, {headers: headers})
+        Instance.get(`/posts/${localStorage.getItem('mentiaUsername')}?id=${params.id}`, {headers: headers})
             .then((response) => {
                 const items = [];
-                for (const [index, value] of response.data.entries()) {
-                    items.push(
-                        <div className='text-left p-5'>
-                            <div className='flex flex-col'>
-                                <h1 className='text-2xl text-blue-light hover:underline'>
-                                    <a href={`/posts/${index + 1}`}>{value.Title}</a>
-                                </h1>
-                                <span className='text-grey-light'>{getDate(value.CreatedAt)}</span>
-                            </div>
+
+                items.push(
+                    <div className='text-left p-5'>
+                        <div className='flex flex-col'>
+                            <h1 className='text-2xl text-blue-light'>
+                                {response.data.Title}
+                            </h1>
+                            <span className='text-grey-light'>{getDate(response.data.CreatedAt)}</span>
+                            <p className="text-grey mt-10">{response.data.Content}</p>
                         </div>
-                    );
-                }
+                    </div>
+                );
                 setState({items: items});
             })
             .catch(() => {
@@ -66,15 +68,12 @@ const Posts = (props) => {
     return (
         <div>
             <Header/>
-            <HeroTitle
-                firstMessage={'Mis Posts'}
-            />
             <div className={classes.heroContainer}>
                 <div className={classes.newPostContainer}>
                     { state.items }
                 </div>
                 <div className={classes.btnContainer}>
-                    <a type='button' className={classes.btn} href="/posts/new">Nuevo post</a>
+                    <a type='button' className={classes.btn} href="/posts">Volver</a>
                 </div>
             </div>
 
@@ -83,4 +82,4 @@ const Posts = (props) => {
 
 }
 
-export default Posts;
+export default Post;
