@@ -7,9 +7,9 @@ function App() {
   return (
     <div className="App">
       <div className="d-flex align-items-center column">
-          <BrowserRouter>
-              <RouteTree/>
-          </BrowserRouter>
+        <BrowserRouter>
+          <RouteTree/>
+        </BrowserRouter>
       </div>
     </div>
   );
