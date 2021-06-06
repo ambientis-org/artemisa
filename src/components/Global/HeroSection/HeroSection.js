@@ -1,6 +1,7 @@
 import React from 'react';
 
 import HeroMenu from '../HeroMenu/HeroMenu';
+import HeroTitle from '../HeroTitle/HeroTitle';
 
 const HeroSection = (props) => {
     
@@ -13,10 +14,10 @@ const HeroSection = (props) => {
     return (
         <main className={classes.mainSection}>
         <div className={classes.heroContainer}>
-          <h1 className={classes.heroTitle}>
+        <h1 className={classes.heroTitle}>
             <span className="block xl:inline text-blue">¿Cómo te has</span>{' '}
             <span className="block xl:inline text-blue-light lg:text-blue">sentido hoy?</span>
-          </h1>
+        </h1>
           <HeroMenu/>
         </div>
       </main>
