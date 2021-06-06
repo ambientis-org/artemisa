@@ -27,8 +27,8 @@ const WelcomeMessage = (props) => {
     }, []);
 
     const getDate = () => {
-        let date = new Date();
-        let days = {
+        const date = new Date();
+        const days = {
             0: 'Domingo', 
             1: 'Lunes', 
             2: 'Martes', 

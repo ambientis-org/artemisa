@@ -8,6 +8,7 @@ import Register from "../../Views/Register/Register";
 import Home from "../../Views/Home/Home";
 import DoctorRegister from "../../Views/DoctorRegister/DoctorRegister";
 import CreatePost from "../../Views/Posts/CreatePost";
+import Posts from "../../Views/Posts/Posts";
 
 
 function RouteTree() {
@@ -18,7 +19,9 @@ function RouteTree() {
                 <Route exact path={"/register"} component={Register}/>
                 <Route exact path={"/registerDoctor"} component={DoctorRegister}/>
                 <Route exact path={"/home"} component={Home}/>
+                <Route exact path={"/posts"} component={Posts}/>
                 <Route exact path={"/posts/new"} component={CreatePost}/>
+                
             </Switch>
         </AuthProvider>
     );
