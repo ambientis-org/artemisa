@@ -22,9 +22,9 @@ const Header = (props) => {
                         <WelcomeMessage/>
                         <div className={classes.profileMenu}>
                             <HeaderMenu/>
-                            <a href="#" className={classes.profileButton}>
+                            <div className={classes.profileButton}>
                                 <img alt="profile" src="https://picsum.photos/50" className={classes.imageContainer}/>
-                            </a>       
+                            </div>       
                         </div>
                     </div>
                 </div>
