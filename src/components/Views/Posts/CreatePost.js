@@ -32,7 +32,8 @@ const CreatePost = (props) => {
                 title,
                 content,
             }
-            Instance.post(`/posts/${localStorage.getItem('mentiaUsername')}`, payload)
+            const headers = {Authorization: localStorage.getItem('mentiaAuthToken')};
+            Instance.post(`/posts/${localStorage.getItem('mentiaUsername')}`, payload, {headers})
                 .then(() => {
                     props.history.push('/posts')
                 })
