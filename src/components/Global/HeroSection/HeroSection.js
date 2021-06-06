@@ -1,7 +1,6 @@
 import React from 'react';
 
 import HeroMenu from '../HeroMenu/HeroMenu';
-import HeroTitle from '../HeroTitle/HeroTitle';
 
 const HeroSection = (props) => {
     

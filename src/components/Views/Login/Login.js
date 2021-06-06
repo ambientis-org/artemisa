@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 
-import { AuthContext } from '../../Api/AuthContext/AuthContext';
 import SubmitButton from '../../FormComponents/SubmitButton/SubmitButton';
 import Input from '../../FormComponents/Input/Input';
 import Instance from '../../Api/Services/Services';
@@ -9,7 +8,6 @@ const Login = (props) => {
 
     const [fields, setFields] = useState({});
     const [errors, setErrors] = useState({});
-    const [authState, setauthState] = useContext(AuthContext);
 
     const submit = (e) => {
         e.preventDefault();
@@ -21,7 +19,6 @@ const Login = (props) => {
         if (handleValidation()) {
             Instance.post('/login', payload)
                 .then(res => {
-                    setauthState({authToken: `Bearer ${res.data.mentiaAuthToken}`, username: res.data.username});
                     localStorage.setItem('mentiaAuthToken', `Bearer ${res.data.mentiaAuthToken}`)
                     localStorage.setItem('mentiaUsername', res.data.username)
                     props.history.push('/home');

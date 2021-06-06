@@ -1,4 +1,3 @@
-import { STATEMENT_OR_BLOCK_KEYS } from "@babel/types";
 import React, { useEffect, useState } from "react";
 import HeatMap from "react-heatmap-grid"
 import Instance from "../../../Api/Services/Services";

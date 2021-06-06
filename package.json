@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "autoprefixer": "^9.8.6",
+    "autosize": "^5.0.0",
     "axios": "^0.21.1",
     "dotenv": "^9.0.2",
     "framer-motion": "^4.1.17",
