@@ -21,8 +21,8 @@ const DoctorCard = (props) => {
                     <figcaption className="font-medium">
                     <div className="text-blue-light">
                         <div className="flex flex-col">
-                        <p>{props.phone},</p> 
-                        <a href={`mailto:${props.email}`} className='underline'>{props.email}</a>
+                            <p>{props.phone},</p> 
+                            <a href={`mailto:${props.email}`} className='underline'>{props.email}</a>
                         </div>
                     </div>
                     <div className="text-grey">
